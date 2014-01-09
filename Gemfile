@@ -10,6 +10,7 @@ gem 'hirb'
 gem 'pry'
 gem 'faker'
 gem 'dragonfly', '~>1.0.2'
+gem 'angularjs-rails'
 
 group :test do
   gem 'rspec-rails'
