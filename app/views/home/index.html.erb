@@ -1,1 +1,13 @@
-<h1>Home</h1>
+<div class="wrapper">
+  <div class="controls">
+    <input ng-model="test" type="text">
+    {{ test }}
+  </div>
+  <div class="main">
+    <ul class="graph" ng-controller="GraphCtrl">
+      <li ng-repeat="person in people">
+        {{person.name}}
+      </li>
+    </ul>
+  </div>
+</div>
