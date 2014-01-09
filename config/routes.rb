@@ -1,5 +1,5 @@
 Edzo::Application.routes.draw do
-  root :to => "networks#index"
+  root :to => "home#index"
 
   resources :networks
   resources :people
