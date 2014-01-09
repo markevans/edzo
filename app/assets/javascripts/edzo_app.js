@@ -4,4 +4,4 @@ edzoApp = angular.module('edzoApp', ['ngResource'])
     $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = $('meta[name="csrf-token"]').attr('content')
   })
 
-  .factory('people', PeopleFactory)
+  .service('people', People)
