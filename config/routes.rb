@@ -1,6 +1,7 @@
 Edzo::Application.routes.draw do
   #root :to => "networks#index"
 
+  resources :networks
   # resources :people
   # resources :relationships
   # resources :person_tags
