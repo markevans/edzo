@@ -5,5 +5,3 @@ edzoApp = angular.module('edzoApp', ['ngResource'])
   })
 
   .service('people', People)
-
-  .directive('node', Node)

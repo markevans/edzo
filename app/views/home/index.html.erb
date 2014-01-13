@@ -5,7 +5,9 @@
   </div>
   <div class="main">
     <div class="graph" ng-controller="GraphCtrl">
-      <node ng-repeat="person in people">i</node>
+      <div class="person" ng-repeat="person in people" ng-controller="PersonCtrl">
+        {{person.name}}
+      </div>
     </div>
   </div>
 </div>
