@@ -11,7 +11,9 @@ window.draggable = (function () {
   return function ($document) {
 
     return {
+      scope: {},
       link: function ($scope, $element) {
+        console.log($scope)
         var endEvents = 'touchend touchcancel mouseup mouseleave',
             moveEvents = 'touchmove mousemove',
             startEvents = 'touchstart mousedown'

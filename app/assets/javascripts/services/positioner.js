@@ -1,9 +1,10 @@
 function positioner () {
-  var width = 5
+  var perRow = 5,
+      pxSpacing = 150
   return function (i) {
     return {
-      x: (i % width),
-      y: Math.floor(i / width)
+      x: (i % perRow) * pxSpacing,
+      y: Math.floor(i / perRow) * pxSpacing
     }
   }
 }
