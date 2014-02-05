@@ -1,16 +1,28 @@
-function graphCtrl($scope, people, relationships, positioner) {
+function graphCtrl($scope, peopleAndRelationships, positioner) {
+  $scope.nodes = []
+  $scope.connections = []
 
-  people.all(function (peeps) {
-    $scope.people = peeps
-    $scope.nodes = peeps.map(function (p, i) {
-      return {
-        person: p,
+  peopleAndRelationships.all(function (people, relationships) {
+    $scope.people = people
+
+    var nodeLookup = {}
+
+    people.forEach(function (person, i) {
+      var node = {
+        person: person,
         position: positioner(i)
       }
+      nodeLookup[person.id] = node
+      $scope.nodes.push(node)
     })
+
+    relationships.forEach(function (relationship) {
+      $scope.connections.push({
+        startNode: nodeLookup[relationship.person_1_id],
+        endNode: nodeLookup[relationship.person_2_id]
+      })
+    })
+
   })
 
-  relationships.all(function (rels) {
-    $scope.relationships = rels
-  })
 }

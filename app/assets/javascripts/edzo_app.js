@@ -6,5 +6,6 @@ edzoApp = angular.module('edzoApp', ['ngResource'])
 
   .service('people', restService('people'))
   .service('relationships', restService('relationships'))
+  .service('peopleAndRelationships', peopleAndRelationships)
   .service('positioner', positioner)
   .directive('draggable', draggable)

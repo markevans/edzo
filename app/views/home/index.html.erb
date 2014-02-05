@@ -7,6 +7,15 @@
       <div class="node" ng-repeat="node in nodes" ng-controller="nodeCtrl" style="top: {{node.position.y}}px; left: {{node.position.x}}px" draggable>
         {{node.person.name}}
       </div>
+      <svg>
+        <line
+          ng-repeat="connection in connections"
+          ng-attr-x1="{{connection.startNode.position.x}}"
+          ng-attr-x2="{{connection.endNode.position.x}}"
+          ng-attr-y1="{{connection.startNode.position.y}}"
+          ng-attr-y2="{{connection.endNode.position.y}}"
+          style="stroke: red; stroke-width: 2;" />
+      </svg>
     </div>
   </div>
 </div>
