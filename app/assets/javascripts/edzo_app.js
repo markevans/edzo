@@ -4,4 +4,7 @@ edzoApp = angular.module('edzoApp', ['ngResource'])
     $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = $('meta[name="csrf-token"]').attr('content')
   })
 
-  .service('people', People)
+  .service('people', people)
+  .service('positioner', positioner)
+
+  .directive('draggable', draggable)

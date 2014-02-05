@@ -12,18 +12,9 @@ body {
   height: 100%;
   position: relative;
 
-  $controls_width: 350px;
-
-  .controls {
-    float: left;
-    width: $controls_width;
-    height: 100%;
-  }
-
   .main {
     position: absolute;
     box-sizing: border-box;
-    padding-left: $controls_width;
     width: 100%;
     height: 100%;
   }
