@@ -1,6 +1,6 @@
 window.draggable = (function () {
 
-  var position = function (event) {
+  var positionOf = function (event) {
     event = event.touches ? event.touches[0] : event
     return {
       x: event.pageX,
@@ -11,11 +11,24 @@ window.draggable = (function () {
   return function ($document) {
 
     return {
-      scope: {},
+      scope: {
+        position: '=?draggablePosition'
+      },
       link: function ($scope, $element) {
         var endEvents = 'touchend touchcancel mouseup mouseleave',
             moveEvents = 'touchmove mousemove',
             startEvents = 'touchstart mousedown'
+
+        if (!$scope.position) {
+          $scope.position = {
+            x: parseInt( $element.css('left') ) || 0,
+            y: parseInt( $element.css('top') ) || 0
+          }
+        }
+
+        $scope.$watch('position', function (newPosition) {
+          $element.css({left: newPosition.x, top: newPosition.y})
+        }, true)
 
         $document.bind(endEvents, function (event) {
           event.preventDefault()
@@ -25,18 +38,18 @@ window.draggable = (function () {
         $element.bind(startEvents, function (event) {
           event.preventDefault()
 
-          var startLeft = parseInt( $element.css('left') ) || 0,
-              startTop = parseInt( $element.css('top') ) || 0,
-              startPosition = position(event)
+          var startMousePosition = positionOf(event),
+              startX = $scope.position.x,
+              startY = $scope.position.y
 
           $document.bind(moveEvents, function (event) {
             event.preventDefault()
 
-            var currentPosition = position(event)
+            var currentMousePosition = positionOf(event)
 
-            $element.css({
-              left: startLeft + (currentPosition.x - startPosition.x),
-              top: startTop + (currentPosition.y - startPosition.y)
+            $scope.$apply(function () {
+              $scope.position.x = startX + (currentMousePosition.x - startMousePosition.x)
+              $scope.position.y = startY + (currentMousePosition.y - startMousePosition.y)
             })
           })
         })
