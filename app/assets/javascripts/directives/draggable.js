@@ -12,22 +12,18 @@ window.draggable = (function () {
 
     return {
       scope: {
-        position: '=?draggablePosition'
+        position: '=draggablePosition'
       },
       link: function ($scope, $element) {
         var endEvents = 'touchend touchcancel mouseup mouseleave',
             moveEvents = 'touchmove mousemove',
             startEvents = 'touchstart mousedown'
 
-        if (!$scope.position) {
-          $scope.position = {
-            x: parseInt( $element.css('left') ) || 0,
-            y: parseInt( $element.css('top') ) || 0
-          }
-        }
-
         $scope.$watch('position', function (newPosition) {
-          $element.css({left: newPosition.x, top: newPosition.y})
+          $element.css({
+            left: newPosition.x - $element.width()/2,
+            top: newPosition.y - $element.height()/2
+          })
         }, true)
 
         $document.bind(endEvents, function (event) {

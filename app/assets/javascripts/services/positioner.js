@@ -3,8 +3,8 @@ function positioner () {
       pxSpacing = 150
   return function (i) {
     return {
-      x: (i % perRow) * pxSpacing,
-      y: Math.floor(i / perRow) * pxSpacing
+      x: (i % perRow) * pxSpacing + pxSpacing/2,
+      y: Math.floor(i / perRow) * pxSpacing + pxSpacing/2
     }
   }
 }
