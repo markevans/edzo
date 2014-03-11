@@ -2,6 +2,9 @@
   <div class="main">
     <div class="graph" ng-controller="graphCtrl">
       <div class="node" ng-repeat="node in nodes" ng-controller="nodeCtrl" draggable draggable-position="node.position">
+        <div class="tools">
+          <span draggable-handle class="glyphicon glyphicon-move"></span>
+        </div>
         {{node.person.name}}
       </div>
       <svg ng-attr-height="{{ (nodes | maxNodePosition).y }}">

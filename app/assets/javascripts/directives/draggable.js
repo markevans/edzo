@@ -17,7 +17,8 @@ window.draggable = (function () {
       link: function ($scope, $element) {
         var endEvents = 'touchend touchcancel mouseup mouseleave',
             moveEvents = 'touchmove mousemove',
-            startEvents = 'touchstart mousedown'
+            startEvents = 'touchstart mousedown',
+            handle = $element.find('[draggable-handle]')
 
         $scope.$watch('position', function (newPosition) {
           $element.css({
@@ -31,7 +32,7 @@ window.draggable = (function () {
           $document.unbind(moveEvents)
         })
 
-        $element.bind(startEvents, function (event) {
+        handle.bind(startEvents, function (event) {
           event.preventDefault()
 
           var startMousePosition = positionOf(event),

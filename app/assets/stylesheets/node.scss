@@ -1,3 +1,4 @@
+@import "bootstrap";
 .node {
   position: absolute;
   width: 100px;
@@ -7,4 +8,11 @@
   background: #eee;
   text-align: center;
   box-shadow: 1px 1px 10px #999;
+
+  .tools {
+    text-align: left;
+    [draggable-handle] {
+      cursor: move;
+    }
+  }
 }
