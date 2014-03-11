@@ -7,7 +7,7 @@
       <div class="node" ng-repeat="node in nodes" ng-controller="nodeCtrl" draggable draggable-position="node.position">
         {{node.person.name}}
       </div>
-      <svg>
+      <svg ng-attr-height="{{ (nodes | maxNodePosition).y }}">
         <line class="connection"
           ng-repeat="connection in connections"
           ng-attr-x1="{{connection.startNode.position.x}}"
