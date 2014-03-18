@@ -1,0 +1,23 @@
+.popup {
+  position: absolute;
+  left: inherit;
+  top: inherit;
+  width: 400px;
+  height: 300px;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #999;
+
+  .popup-tools {
+    text-align: right;
+    cursor: move;
+    .popup-close {
+      cursor: pointer;
+    }
+  }
+
+  .popup-content {
+  }
+}
+

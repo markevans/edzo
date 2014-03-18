@@ -3,10 +3,14 @@
     <div class="graph" ng-controller="graphCtrl">
       <div class="node" ng-repeat="node in nodes" ng-controller="nodeCtrl" draggable draggable-position="node.position">
         <div class="tools">
-          <span draggable-handle class="glyphicon glyphicon-move"></span>
+          <span draggable-handle class="glyphicon glyphicon-move move"></span>
+          <span class="glyphicon glyphicon-eye-open view" ng-click="toggleView()"></span>
         </div>
         {{node.person.name}}
       </div>
+      <popup ng-repeat="node in nodes" ng-if="node.showPopup" on-close="node.showPopup=false" initial-position="node.position">
+        Name: {{node.person.name}}
+      </popup>
       <svg ng-attr-height="{{ (nodes | maxNodePosition).y }}">
         <line class="connection"
           ng-repeat="connection in connections"

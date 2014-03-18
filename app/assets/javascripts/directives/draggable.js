@@ -12,11 +12,12 @@ window.draggable = (function () {
 
     return {
       scope: {
-        position: '=?draggablePosition'
+        position: '=?draggablePosition',
+        initialPosition: '=?draggableInitialPosition'
       },
       link: function ($scope, $element) {
         if (!$scope.position) {
-          $scope.position = {x: 0, y: 0}
+          $scope.position = $scope.initialPosition || {x: 0, y: 0}
         }
 
         var endEvents = 'touchend touchcancel mouseup mouseleave',
@@ -49,8 +50,10 @@ window.draggable = (function () {
             var currentMousePosition = positionOf(event)
 
             $scope.$apply(function () {
-              $scope.position.x = startX + (currentMousePosition.x - startMousePosition.x)
-              $scope.position.y = startY + (currentMousePosition.y - startMousePosition.y)
+              $scope.position = {
+                x: startX + (currentMousePosition.x - startMousePosition.x),
+                y: startY + (currentMousePosition.y - startMousePosition.y)
+              }
             })
           })
         })

@@ -13,9 +13,12 @@
   @include translate(-50%, -50%);
 
   .tools {
-    text-align: left;
-    [draggable-handle] {
+    text-align: right;
+    .move {
       cursor: move;
+    }
+    .view {
+      cursor: pointer;
     }
   }
 }

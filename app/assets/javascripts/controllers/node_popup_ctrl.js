@@ -1,0 +1,2 @@
+function nodePopupCtrl ($scope) {
+}
