@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import "mixins";
+
 .node {
   position: absolute;
   width: 100px;
@@ -8,6 +10,7 @@
   background: #eee;
   text-align: center;
   box-shadow: 1px 1px 10px #999;
+  @include translate(-50%, -50%);
 
   .tools {
     text-align: left;
